@@ -12,11 +12,11 @@ const Category = () => {
         dispatch(getCategories())
     }, [dispatch])
   return (
-    <div className='w-1/6 bg-gray-100'>
-        <div>CATEGORY</div>
+    <div className='w-1/6 p-4 '>
+        <div className='border-b pb-2 text-xl font-bold'>CATEGORY</div>
         {
             categories?.map((category,i) => (
-                <div key={i}>{category}</div>
+                <div className=' text-lg cursor-pointer rounded-lg pb-2 hover:bg-gray-200 p-2 sm:text-sm sm:p-2' key={i}>{category}</div>
             ))
         }
     </div>
