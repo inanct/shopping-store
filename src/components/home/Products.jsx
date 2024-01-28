@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../redux/productSlice';
+import { getCategoryProducts, getProducts } from '../../redux/productSlice';
 import Loading from '../Loading';
 import Product from './Product';
 
-const Products = () => {
+const Products = ({category}) => {
   const dispatch = useDispatch()
   const {products, productsStatus} = useSelector(state => state.products);
   console.log(products, "products")
 
   useEffect(() => {
-    dispatch(getProducts())
-  },[dispatch])
+    if(category){
+      dispatch(getCategoryProducts(category))
+    }else{
+      dispatch(getProducts())
+    }
+   
+  },[dispatch, category])
   return (
     <div>
       {
